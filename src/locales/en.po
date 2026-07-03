@@ -58,18 +58,18 @@ msgstr ""
 
 #. placeholder {0}: shortenNumber(followersCount)
 #. placeholder {1}: shortenNumber(followersCount)
-#: src/components/account-block.jsx:283
+#: src/components/account-block.jsx:286
 msgid "{followersCount, plural, one {<0>{0}</0> follower} other {<1>{1}</1> followers}}"
 msgstr "{followersCount, plural, one {<0>{0}</0> follower} other {<1>{1}</1> followers}}"
 
-#: src/components/account-block.jsx:309
+#: src/components/account-block.jsx:311
 #: src/components/account-info.jsx:778
 msgid "Verified"
 msgstr ""
 
 #. placeholder {0}: niceDateTime(createdAt, { hideTime: true, })
 #. placeholder {0}: niceDateTime(createdAt, { hideTime: true, })
-#: src/components/account-block.jsx:325
+#: src/components/account-block.jsx:327
 #: src/components/account-info.jsx:917
 msgid "Joined <0>{0}</0>"
 msgstr ""
@@ -1384,21 +1384,21 @@ msgstr ""
 msgid "Posts on this list are hidden from Home/Following"
 msgstr "Posts on this list are hidden from Home/Following"
 
-#: src/components/math-block.jsx:132
+#: src/components/math-block.jsx:141
 msgid "Unable to format math"
 msgstr "Unable to format math"
 
-#: src/components/math-block.jsx:146
+#: src/components/math-block.jsx:155
 msgid "Math expressions found."
 msgstr "Math expressions found."
 
 #. Action to switch from rendered math back to raw (LaTeX) markup
-#: src/components/math-block.jsx:149
+#: src/components/math-block.jsx:158
 msgid "Show markup"
 msgstr "Show markup"
 
 #. Action to render math expressions from raw (LaTeX) markup
-#: src/components/math-block.jsx:154
+#: src/components/math-block.jsx:163
 msgid "Format math"
 msgstr "Format math"
 
@@ -1548,7 +1548,7 @@ msgstr ""
 msgid "Filtered"
 msgstr ""
 
-#: src/components/media.jsx:533
+#: src/components/media.jsx:547
 msgid "Open file"
 msgstr "Open file"
 
