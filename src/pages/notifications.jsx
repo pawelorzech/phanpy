@@ -695,8 +695,10 @@ function Notifications({ columnMode }) {
     },
     {
       useKey: true,
+      ignoreModifiers: true,
       ignoreEventWhen: (e) => {
         // Allow '.' even with Shift (some keyboard layouts require Shift for '.')
+        // NOTE: ignoreModifiers:true required so lib doesn't reject Shift+. first.
         if (e.key === '.') return false;
         return e.metaKey || e.ctrlKey || e.altKey || e.shiftKey;
       },
@@ -743,7 +745,7 @@ function Notifications({ columnMode }) {
           <div class="header-grid">
             <div class="header-side">
               <NavMenu />
-              <Link to="/" class="button plain">
+              <Link to="/" class="button plain4">
                 <Icon icon="home" size="l" alt={t`Home`} />
               </Link>
             </div>

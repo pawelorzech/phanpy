@@ -963,9 +963,11 @@ function Catchup() {
     },
     {
       useKey: true,
+      ignoreModifiers: true,
       preventDefault: true,
       ignoreEventWhen: (e) => {
         // Allow '.' even with Shift (some keyboard layouts require Shift for '.')
+        // NOTE: ignoreModifiers:true required so lib doesn't reject Shift+. first.
         if (e.key === '.') return false;
         return e.metaKey || e.ctrlKey || e.altKey || e.shiftKey;
       },
@@ -1019,12 +1021,12 @@ function Catchup() {
             <div class="header-side">
               <NavMenu />
               {uiState === 'results' && (
-                <Link to="/catchup" class="button plain">
+                <Link to="/catchup" class="button plain4">
                   <Icon icon="history2" size="l" alt={t`Catch-up`} />
                 </Link>
               )}
               {uiState === 'start' && (
-                <Link to="/" class="button plain">
+                <Link to="/" class="button plain4">
                   <Icon icon="home" size="l" alt={t`Home`} />
                 </Link>
               )}
@@ -1040,7 +1042,7 @@ function Catchup() {
               {uiState !== 'start' && uiState !== 'loading' && (
                 <button
                   type="button"
-                  class="plain"
+                  class="plain4"
                   onClick={() => {
                     setShowHelp(true);
                   }}
