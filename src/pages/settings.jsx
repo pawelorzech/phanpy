@@ -243,6 +243,10 @@ function Settings({ onClose }) {
               </span>
               <LangSelector />
             </li>
+          </ul>
+        </section>
+        <section>
+          <ul class="checkbox-list">
             <li class="block">
               <label>
                 <input
@@ -254,6 +258,22 @@ function Settings({ onClose }) {
                 />
                 <span>
                   <Trans>Keep navigation bars visible while scrolling</Trans>
+                </span>
+              </label>
+            </li>
+            <li class="block">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={snapStates.settings.postUsernameOnly}
+                  onChange={(e) => {
+                    states.settings.postUsernameOnly = e.target.checked;
+                  }}
+                />
+                <span>
+                  <Trans>
+                    Show username instead of display name on timeline posts
+                  </Trans>
                 </span>
               </label>
             </li>
@@ -428,6 +448,41 @@ function Settings({ onClose }) {
                       <Trans>Hide Federated timeline</Trans>
                     </span>
                   </label>
+                </li>
+                <li class="block">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={snapStates.settings.hidePostMetrics}
+                      onChange={(e) => {
+                        states.settings.hidePostMetrics = e.target.checked;
+                      }}
+                    />
+                    <span>
+                      <Trans>Hide post metrics</Trans>
+                    </span>
+                  </label>
+                </li>
+                <li class="block">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={snapStates.settings.lowercasePostText}
+                      onChange={(e) => {
+                        states.settings.lowercasePostText = e.target.checked;
+                      }}
+                    />
+                    <span>
+                      <Trans>Lowercase timeline post text</Trans>
+                    </span>
+                  </label>
+                  <div class="sub-section insignificant">
+                    <small>
+                      <Trans>
+                        Only affects languages with letter case, like English.
+                      </Trans>
+                    </small>
+                  </div>
                 </li>
               </ul>
             </section>

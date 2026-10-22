@@ -1182,7 +1182,7 @@ a[href^='http'][rel*='nofollow']:visited:not(:has(div)) {
 .carousel-pagination-dot {
   position: relative;
   flex: 0 1 auto;
-  width: 16px;
+  width: 12px;
   min-width: 4px;
   padding: 0;
   border: 0;
@@ -1216,6 +1216,9 @@ a[href^='http'][rel*='nofollow']:visited:not(:has(div)) {
   &:not(.active)::before {
     background-color: var(--carousel-color);
   }
+}
+.carousel-pagination-dot.active {
+  width: 16px;
 }
 .carousel-pagination-dot.active::before {
   background-color: var(--carousel-color);
@@ -3408,6 +3411,40 @@ ul.link-list li a .icon {
 
   select {
     width: 10em;
+  }
+}
+
+/* LOWERCASE POST TEXT */
+body.lowercase-post-text {
+  .status:not(.large, .status.large .status) .container,
+  .status.filtered,
+  .status.compact-reply,
+  .status-carousel h3,
+  .status-filtered-badge {
+    text-transform: lowercase;
+  }
+
+  .status-filtered-badge * {
+    text-transform: inherit !important;
+  }
+
+  .status:not(.large, .status.large .status) .container {
+    .pre-content-container *,
+    button,
+    input,
+    select,
+    textarea {
+      text-transform: inherit;
+    }
+
+    /* .hashtag, */
+    code,
+    pre,
+    samp,
+    kbd,
+    var {
+      text-transform: none;
+    }
   }
 }
 
