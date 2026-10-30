@@ -1149,6 +1149,12 @@ a[href^='http'][rel*='nofollow']:visited:not(:has(div)) {
   color: var(--carousel-color);
   text-shadow: 0 1px var(--bg-color);
   white-space: nowrap;
+
+  :is(button, .button).status-carousel-info-button {
+    vertical-align: middle;
+    color: inherit;
+    padding: 0;
+  }
 }
 .status-carousel header > span {
   flex-shrink: 0;
@@ -1826,8 +1832,8 @@ body:has(.media-modal-container + .status-deck) .media-post-link {
     0 10px 36px -4px var(--button-bg-blur-color);
   transition: all 0.3s ease-in-out;
 }
-.deck-container:has(header[hidden]) ~ #compose-button:not(.loading),
-#compose-button[hidden]:not(.loading) {
+.deck-container:has(header[hidden]) ~ #compose-button:not(.loading, .min),
+#compose-button[hidden]:not(.loading, .min) {
   transform: translateY(200%);
   pointer-events: none;
   user-select: none;
