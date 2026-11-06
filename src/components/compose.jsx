@@ -1124,7 +1124,7 @@ function Compose({
                     onClose();
                   }}
                 >
-                  <Icon icon="popout" />{' '}
+                  <Icon icon="popout" size="s" />{' '}
                   <span>
                     <Trans>Pop out</Trans>
                   </span>
@@ -1135,7 +1135,7 @@ function Compose({
                 class="plain4 min-button"
                 onClick={onMinimize}
               >
-                <Icon icon="minimize" />{' '}
+                <Icon icon="minimize" size="s" />{' '}
                 <span>
                   <Trans>Minimize</Trans>
                 </span>
@@ -1233,7 +1233,7 @@ function Compose({
                     });
                   }}
                 >
-                  <Icon icon="popin" />{' '}
+                  <Icon icon="popin" size="s" />{' '}
                   <span>
                     <Trans>Pop in</Trans>
                   </span>
@@ -1986,7 +1986,7 @@ function Compose({
               <label
                 class={`toolbar-button ${highlightQuoteApprovalPolicyField ? 'highlight' : ''}`}
               >
-                <Icon icon="quote2" alt="Quote settings" />
+                <Icon icon="quote2" alt={t`Quote settings`} />
                 {quoteApprovalPolicy === 'followers' && (
                   <Icon icon="group" class="insignificant" />
                 )}

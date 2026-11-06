@@ -1188,13 +1188,15 @@ a[href^='http'][rel*='nofollow']:visited:not(:has(div)) {
 .carousel-pagination-dot {
   position: relative;
   flex: 0 1 auto;
-  width: 12px;
+  width: 8px;
   min-width: 4px;
   padding: 0;
   border: 0;
   background-color: transparent;
   opacity: 0.75;
-  transition: opacity 0.2s ease-out;
+  transition: 0.2s ease-out;
+  transition-property: opacity, width;
+  will-change: width;
 
   /* The visible bar */
   &::before {
@@ -1321,7 +1323,7 @@ a[href^='http'][rel*='nofollow']:visited:not(:has(div)) {
   max-height: max(160px, 50vh);
 } */
 .status-carousel.boosts-carousel {
-  --carousel-color: var(--reblog-color);
+  --carousel-color: var(--reblog-text-color);
   --carousel-faded-color: var(--reblog-faded-color);
 }
 .status-carousel.boosts-carousel .status-reblog {
@@ -1644,6 +1646,7 @@ a[href^='http'][rel*='nofollow']:visited:not(:has(div)) {
   justify-content: space-between;
   text-align: center;
   pointer-events: none;
+  align-items: center;
 }
 :is(.carousel-top-controls, .carousel-controls)[hidden] {
   opacity: 0;
@@ -1680,9 +1683,13 @@ button.carousel-dot {
   pointer-events: none;
 }
 .carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
   border-radius: 999px;
   background-color: var(--bg-faded-blur-color);
-  border: 1px solid var(--outline-color);
+  border: var(--hairline-width) solid var(--outline-color);
   box-shadow: 0 4px 32px var(--drop-shadow-color);
   /* backdrop-filter: blur(12px) invert(0.25); */
   transition: background-color 0.2s ease-out;
@@ -1694,26 +1701,39 @@ button.carousel-dot {
   backdrop-filter: none !important;
   border: none;
   box-shadow: none;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  width: 8px;
+  min-width: 4px;
+  height: 8px;
+  padding: 0;
+  opacity: 0.75;
+  transition: 0.2s ease-out;
+  transition-property: opacity, width;
+  will-change: width;
 }
-/* button.carousel-dot[disabled] {
-  pointer-events: none;
-} */
-button.carousel-dot .icon {
-  transition: all 0.2s;
-  transform: scale(0.5);
+button.carousel-dot > .carousel-dot-indicator {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border: 1px solid var(--text-color);
+  border-radius: 999px;
+  background-color: transparent;
+  transition: background-color 0.2s ease-out;
 }
-button.carousel-dot:not(.active) .icon {
-  opacity: 0.5;
-}
-button.carousel-dot:not(.active):is(:hover, :focus) .icon {
+button.carousel-dot:is(:hover, :focus) {
   opacity: 1;
+}
+button.carousel-dot:not(.active):is(:hover, :focus) > .carousel-dot-indicator {
+  background-color: var(--text-color);
 }
 button.carousel-dot:is(.active, [disabled].active) {
+  width: 16px;
   opacity: 1;
 }
-button.carousel-dot:is(.active, [disabled].active) .icon {
-  opacity: 1;
-  transform: scale(1);
+button.carousel-dot:is(.active, [disabled].active) > .carousel-dot-indicator {
+  background-color: var(--text-color);
 }
 @media (hover: hover) {
   .carousel-top-controls {
@@ -2626,6 +2646,8 @@ body > .szh-menu-container {
 
 :is(.shiny-pill, :root .toastify.shiny-pill) {
   pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
   color: var(--link-text-color);
   font-weight: 500;
   text-shadow: 0 1px var(--bg-color);
@@ -2635,14 +2657,16 @@ body > .szh-menu-container {
     0 3px 16px var(--drop-shadow-color),
     0 6px 16px -3px var(--drop-shadow-color);
 }
-:is(.shiny-pill, :root .toastify.shiny-pill):hover:not(:active) {
-  color: var(--text-color);
-  border-color: var(--link-color);
-  filter: none !important;
-  box-shadow:
-    0 3px 16px var(--drop-shadow-color),
-    0 6px 16px -3px var(--drop-shadow-color),
-    0 6px 16px var(--drop-shadow-color);
+@media (hover: hover) and (pointer: fine) {
+  :is(.shiny-pill, :root .toastify.shiny-pill):hover:not(:active) {
+    color: var(--text-color);
+    border-color: var(--link-color);
+    filter: none !important;
+    box-shadow:
+      0 3px 16px var(--drop-shadow-color),
+      0 6px 16px -3px var(--drop-shadow-color),
+      0 6px 16px var(--drop-shadow-color);
+  }
 }
 
 /* TOAST */
@@ -2681,8 +2705,13 @@ body > .szh-menu-container {
   text-align: center;
   line-height: 1.25;
 }
-:root .toastify.alert:is(:hover, :active) {
+:root .toastify.alert:is(:active) {
   background-color: var(--bg-faded-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  :root .toastify.alert:hover {
+    background-color: var(--bg-faded-color);
+  }
 }
 
 /* AVATARS STACK */
@@ -3350,7 +3379,7 @@ ul.link-list li a .icon {
   .timeline:not(.flat)
     > li:not(.timeline-item-container-end, .timeline-item-container-middle):has(
       .status-badge:not(:empty)
-    ) {
+    ):not(:has(.status-pre-meta, .status.compact-reply)) {
     border-start-end-radius: 8px;
     @supports (corner-shape: squircle) {
       border-start-end-radius: 16px;
